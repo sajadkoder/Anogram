@@ -1,15 +1,16 @@
 <div align="center">
 
-# AnoGram
+# Sajad Messenger
 
 ### Fast. Secure. Private.
 
-A decentralized offline-capable messaging application with Telegram-inspired UI and Bluetooth mesh networking.
+A decentralized offline-capable messaging application built by **Sajad** with Telegram-inspired UI and bitchat-style Bluetooth mesh networking.
 
 [![Platform](https://img.shields.io/badge/Platform-Android-green.svg)](https://www.android.com)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.0-purple.svg)](https://kotlinlang.org)
 [![MinSDK](https://img.shields.io/badge/MinSDK-26-orange.svg)](https://developer.android.com/about/versions/o)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](#license)
+[![Developer](https://img.shields.io/badge/Developer-Sajad-blue.svg)](#about)
 
 [Features](#features) • [Architecture](#architecture) • [Installation](#installation) • [Usage](#usage) • [Contributing](#contributing)
 
@@ -17,20 +18,20 @@ A decentralized offline-capable messaging application with Telegram-inspired UI 
 
 ---
 
-## Overview
+## About
 
-AnoGram is a modern Android messaging application built with **Jetpack Compose** and **Clean Architecture** principles. It features a beautiful Telegram-inspired user interface with full offline capabilities through Bluetooth Low Energy (BLE) mesh networking.
+**Sajad Messenger** - Built by Sajad
 
-Unlike traditional messaging apps that require constant internet connectivity, AnoGram can operate completely offline using BLE to discover and communicate with nearby devices. Messages can relay through multiple hops (up to 7) to reach devices beyond direct Bluetooth range.
+This project is a combination of the best features from Telegram's beautiful UI and bitchat's revolutionary offline mesh networking technology. The result is a powerful, privacy-focused messaging app that works anywhere, even without internet connectivity.
 
 ### Key Highlights
 
-- **100% Offline Capable** - Works without internet using Bluetooth mesh
+- **100% Offline Capable** - Works without internet using Bluetooth mesh (like bitchat)
 - **Modern UI/UX** - Telegram-inspired Material 3 design
 - **Clean Architecture** - Scalable, testable, maintainable codebase
 - **Privacy First** - No accounts, no phone numbers, no servers
 - **Peer-to-Peer** - Direct device-to-device communication
-- **Multi-hop Relay** - Messages route through nearby devices
+- **Multi-hop Relay** - Messages route through nearby devices (up to 7 hops)
 
 ---
 
@@ -193,7 +194,7 @@ app/src/main/java/com/anogram/app/
 | **Coil Compose** | Image loading |
 | **KSP** | Kotlin Symbol Processing |
 
-### Bluetooth Stack
+### Bluetooth Stack (from bitchat)
 
 | Component | Description |
 |-----------|-------------|
@@ -695,8 +696,8 @@ SOFTWARE.
 
 ## Acknowledgments
 
-- [BitChat](https://github.com/permissionlesstech/bitchat) - Inspiration for BLE mesh networking
-- [Telegram](https://telegram.org) - UI/UX design inspiration
+- [Telegram](https://telegram.org) - Beautiful UI/UX design inspiration
+- [BitChat](https://github.com/permissionlesstech/bitchat) - BLE mesh networking inspiration and implementation reference
 - [Stream Chat](https://getstream.io/chat) - Architecture patterns
 - [Android Developers](https://developer.android.com) - Documentation and guides
 
@@ -704,16 +705,15 @@ SOFTWARE.
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/anogram/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/anogram/discussions)
+- **Developer**: Sajad
+- **GitHub**: [sajadkoder](https://github.com/sajadkoder)
 - **Email**: support@anogram.app
 
 ---
 
 <div align="center">
 
-**Built with ❤️ by the AnoGram Team**
+**Built with ❤️ by Sajad**
 
-[⬆ Back to Top](#anogram)
-
+[⬆ Back to Top](#sajad-messenger)
 </div>
