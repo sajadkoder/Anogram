@@ -1,6 +1,6 @@
 <div align="center">
 
-# Sajad Messenger
+# AnoGram
 
 ### Fast. Secure. Private.
 
@@ -10,7 +10,6 @@ A decentralized offline-capable messaging application built by **Sajad** with Te
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.0-purple.svg)](https://kotlinlang.org)
 [![MinSDK](https://img.shields.io/badge/MinSDK-26-orange.svg)](https://developer.android.com/about/versions/o)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](#license)
-[![Developer](https://img.shields.io/badge/Developer-Sajad-blue.svg)](#about)
 
 [Features](#features) • [Architecture](#architecture) • [Installation](#installation) • [Usage](#usage) • [Contributing](#contributing)
 
@@ -20,7 +19,7 @@ A decentralized offline-capable messaging application built by **Sajad** with Te
 
 ## About
 
-**Sajad Messenger** - Built by Sajad
+**AnoGram** - Built by **Sajad**
 
 This project is a combination of the best features from Telegram's beautiful UI and bitchat's revolutionary offline mesh networking technology. The result is a powerful, privacy-focused messaging app that works anywhere, even without internet connectivity.
 
@@ -697,7 +696,7 @@ SOFTWARE.
 ## Acknowledgments
 
 - [Telegram](https://telegram.org) - Beautiful UI/UX design inspiration
-- [BitChat](https://github.com/permissionlesstech/bitchat) - BLE mesh networking inspiration and implementation reference
+- [BitChat](https://github.com/permissionlesstech/bitchat) - BLE mesh networking inspiration
 - [Stream Chat](https://getstream.io/chat) - Architecture patterns
 - [Android Developers](https://developer.android.com) - Documentation and guides
 
@@ -715,5 +714,5 @@ SOFTWARE.
 
 **Built with ❤️ by Sajad**
 
-[⬆ Back to Top](#sajad-messenger)
+[⬆ Back to Top](#anogram)
 </div>

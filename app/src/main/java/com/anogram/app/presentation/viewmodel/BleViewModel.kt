@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.util.UUID
@@ -44,7 +45,7 @@ class BleViewModel @Inject constructor(
     val isBluetoothEnabled = bleManager.isBluetoothEnabled.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
     val connectedPeers = bleManager.connectedPeers.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptySet())
 
-    private val deviceId = UUID.randomUUID().toString().take(8)
+    private val deviceId = bleManager.getMyDeviceId().ifEmpty { UUID.randomUUID().toString().take(8) }
 
     init {
         bleManager.setDeviceInfo(deviceId, "AnoGram")
@@ -84,6 +85,14 @@ class BleViewModel @Inject constructor(
         bleManager.stopScan()
     }
 
+    fun connectToPeer(peer: BlePeer) {
+        bleManager.connectToPeer(peer)
+    }
+
+    fun disconnectPeer(address: String) {
+        bleManager.disconnectPeer(address)
+    }
+
     fun sendMessage(chatId: Long, content: String) {
         viewModelScope.launch {
             val message = Message(
@@ -95,11 +104,7 @@ class BleViewModel @Inject constructor(
             )
             messageRepository.insertMessage(message)
             
-            val bleMessage = BleMessage(
-                senderId = deviceId,
-                senderName = "Me",
-                content = content
-            )
+            bleManager.sendBleMessage(content)
             
             chatRepository.updateLastMessage(chatId, content, message.timestamp)
 
@@ -108,24 +113,35 @@ class BleViewModel @Inject constructor(
     }
 
     private suspend fun handleIncomingMessage(bleMessage: BleMessage) {
-        val chats = chatRepository.getAllChats()
-        chats.collect { chatList ->
-            val bleChat = chatList.find { it.name == "BLE Mesh" }
-            
-            if (bleChat != null) {
-                val message = Message(
-                    chatId = bleChat.id,
-                    content = "[BLE] ${bleMessage.senderName}: ${bleMessage.content}",
-                    timestamp = bleMessage.timestamp,
-                    isOutgoing = false,
-                    status = MessageStatus.DELIVERED
-                )
-                messageRepository.insertMessage(message)
-                chatRepository.updateLastMessage(bleChat.id, bleMessage.content, bleMessage.timestamp)
-            }
-            
-            bleManager.markMessageDelivered(bleMessage.id)
+        val chats = chatRepository.getAllChats().first()
+        var bleChat = chats.find { it.name == "BLE Mesh" }
+        
+        if (bleChat == null) {
+            val newChat = Chat(
+                name = "BLE Mesh",
+                avatarUrl = null,
+                lastMessage = "",
+                lastMessageTime = 0,
+                unreadCount = 0
+            )
+            chatRepository.insertChat(newChat)
+            bleChat = chatRepository.getAllChats().first().find { it.name == "BLE Mesh" }
         }
+        
+        bleChat?.let { chat ->
+            val message = Message(
+                chatId = chat.id,
+                content = "[BLE] ${bleMessage.senderName}: ${bleMessage.content}",
+                timestamp = bleMessage.timestamp,
+                isOutgoing = false,
+                status = MessageStatus.DELIVERED
+            )
+            messageRepository.insertMessage(message)
+            chatRepository.updateLastMessage(chat.id, bleMessage.content, bleMessage.timestamp)
+            chatRepository.incrementUnreadCount(chat.id)
+        }
+        
+        bleManager.markMessageDelivered(bleMessage.id)
     }
 
     fun clearError() {
