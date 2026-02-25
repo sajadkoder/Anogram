@@ -706,7 +706,6 @@ SOFTWARE.
 
 - **Developer**: Sajad
 - **GitHub**: [sajadkoder](https://github.com/sajadkoder)
-- **Email**: support@anogram.app
 
 ---
 
