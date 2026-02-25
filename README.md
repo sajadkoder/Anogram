@@ -4,7 +4,7 @@
 
 ### Fast. Secure. Private.
 
-A decentralized offline-capable messaging application built by **Sajad** with Telegram-inspired UI and bitchat-style Bluetooth mesh networking.
+A decentralized offline-capable messaging application built with Telegram-inspired UI and bitchat-style Bluetooth mesh networking.
 
 [![Platform](https://img.shields.io/badge/Platform-Android-green.svg)](https://www.android.com)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.0-purple.svg)](https://kotlinlang.org)
