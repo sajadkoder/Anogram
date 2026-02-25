@@ -158,6 +158,7 @@ private fun ReplyPreviewBar(
 
         Spacer(modifier = Modifier.width(8.dp))
 
+@Suppress("DEPRECATION")
         Icon(
             imageVector = Icons.Default.Reply,
             contentDescription = "Reply",
